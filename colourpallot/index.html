@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>KIDADs WORLD Color Pattern</title>
+
+	<style>
+		:root {
+			--bg: #fff8dc; /* Constant background */
+			--title-bg: #dbeafe;
+			--text: #1f2937;
+			--btn-bg: #111827;
+			--btn-text: #ffffff;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			min-height: 100vh;
+			display: grid;
+			place-items: center;
+			font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+			background: var(--bg); /* stays constant */
+			color: var(--text);
+		}
+
+		.card {
+			width: min(90vw, 560px);
+			padding: 32px;
+			border-radius: 16px;
+			background: rgba(255, 255, 255, 0.72);
+			backdrop-filter: blur(4px);
+			box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
+			text-align: center;
+		}
+
+		h1 {
+			margin: 0 0 24px;
+			font-size: clamp(2rem, 5vw, 3rem);
+			letter-spacing: 1.2px;
+			display: inline-block;
+			padding: 8px 14px;
+			border-radius: 10px;
+			background: var(--title-bg); /* THIS changes */
+			transition: background 0.3s ease;
+		}
+
+		.buttons {
+			display: flex;
+			justify-content: center;
+			gap: 12px;
+			flex-wrap: wrap;
+			margin-bottom: 15px;
+		}
+
+		button {
+			border: 0;
+			padding: 12px 18px;
+			border-radius: 10px;
+			font-size: 1rem;
+			font-weight: 600;
+			cursor: pointer;
+			background: var(--btn-bg);
+			color: var(--btn-text);
+		}
+
+		.color-box {
+			margin-top: 10px;
+		}
+
+		input[type="color"] {
+			width: 60px;
+			height: 40px;
+			border: none;
+			cursor: pointer;
+			border-radius: 8px;
+		}
+	</style>
+</head>
+
+<body>
+	<main class="card">
+		<h1 id="titleText">
+			KIDADs WORLD தெய்வத்தான் ஆகா தெனினும் முயற்சிதன் மெய்வருத்தக் கூலி தரும்
+		</h1>
+
+		<div class="buttons">
+			<button id="bgBtn">Title Background Colour</button>
+			<button id="textBtn">Text Colour</button>
+		</div>
+
+		<div class="color-box">
+			<p>Select Color 🎨</p>
+			<input type="color" id="colorPicker" value="#dbeafe" />
+		</div>
+	</main>
+
+	<script>
+		const bgBtn = document.getElementById("bgBtn");
+		const textBtn = document.getElementById("textBtn");
+		const titleText = document.getElementById("titleText");
+		const colorPicker = document.getElementById("colorPicker");
+
+		// Change ONLY title background
+		bgBtn.addEventListener("click", () => {
+			const selectedColor = colorPicker.value;
+			document.documentElement.style.setProperty("--title-bg", selectedColor);
+		});
+
+		// Change text color
+		textBtn.addEventListener("click", () => {
+			const selectedColor = colorPicker.value;
+			titleText.style.color = selectedColor;
+		});
+	</script>
+</body>
+</html>
